@@ -8,6 +8,13 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noImplicitReturns": true,
+    "baseUrl": "./", 
+    "paths": {
+      "libtest": [
+        "./dist/libtest"
+      ],
+      "test01": ["dist/test01"]
+    },
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
     "esModuleInterop": true,

@@ -1,0 +1,75 @@
+
+ <!-- Main Grid -->
+ <div class="app-grid">
+    <!-- Headers -->
+    <header class="left-header">Left Header</header>
+    <header class="center-header">
+      <h1>Responsive PWA</h1>
+    </header>
+    <header class="right-header">Right Header</header>
+    
+    <!-- Main Content -->
+    <nav class="left-nav" id="leftNav">
+      <h3 class="nav-text">Navigation</h3>
+      <ul>
+        <li class="nav-text">Menu Item 1</li>
+        <li class="nav-text">Menu Item 2</li>
+        <li class="nav-text">Menu Item 3</li>
+        <li class="nav-text">Menu Item 4</li>
+      </ul>
+    </nav>
+    
+    <main class="center-content">
+      <h2>Scrollable Main Content</h2>
+      <div style="height: 2000px;">
+        <p>This content area will scroll vertically on all devices.</p>
+        <p>Comming Soon.</p>
+      </div>
+    </main>
+    
+    <aside class="right-sidebar">
+      <h3 class="sidebar-text">Sidebar</h3>
+      <p class="sidebar-text">Additional widgets and information</p>
+    </aside>
+    
+    <!-- Footers -->
+    <footer class="left-footer">Left Footer</footer>
+    <footer class="center-footer">© 2025 A.Hashemian</footer>
+    <footer class="right-footer">Right Footer</footer>
+  </div>
+
+  <script>
+    // Enhanced mobile menu functionality
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const leftNav = document.getElementById('leftNav');
+    const menuOverlay = document.getElementById('menuOverlay');
+    
+    function toggleMenu() {
+      leftNav.classList.toggle('mobile-active');
+      menuOverlay.classList.toggle('active');
+      
+      // Prevent scrolling when menu is open
+      if (leftNav.classList.contains('mobile-active')) {
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.body.style.overflow = '';
+      }
+    }
+    
+    mobileMenuToggle.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+    
+    // Handle standalone mode detection
+    function isStandalone() {
+      return window.matchMedia('(display-mode: standalone)').matches || 
+             window.navigator.standalone ||
+             document.referrer.includes('android-app://');
+    }
+    
+    // Adjust UI for standalone mode if needed
+    if (isStandalone()) {
+      document.documentElement.style.setProperty('--header-height', '80px');
+      document.documentElement.style.setProperty('--footer-height', '60px');
+      console.log('Running in standalone mode');
+    }
+  </script>

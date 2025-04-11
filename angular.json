@@ -25,7 +25,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "projects/libtest/uitest/csslib.css"
+              
             ],
             "scripts": []
           },
@@ -87,6 +89,39 @@
               "src/styles.css"
             ],
             "scripts": []
+          }
+        }
+      }
+    },
+    "libtest": {
+      "projectType": "library",
+      "root": "projects/libtest",
+      "sourceRoot": "projects/libtest/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/libtest/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libtest/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/libtest/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/libtest/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
           }
         }
       }
